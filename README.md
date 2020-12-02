@@ -14,8 +14,6 @@ iw wlan0 scan | grep ESSID
 sudo apt install python3-gpiozero
 ```
 
-
-
 7. Blacklist audio output and enable usb audio as card 0
 sudo nano /etc/modprobe.d/alsa-base.conf
 ```
@@ -23,14 +21,22 @@ options snd-usb-audio index=0
 blacklist snd_bcm2835
 ```
 
-8. Install the mumble client [talkkonnect](https://github.com/talkkonnect/talkkonnect)
+(8a. If not done already (e.g. this repo contains the binary already) compile the mumble client [talkkonnect](https://github.com/talkkonnect/talkkonnect)
  * Install as described in the README
  * It should be possible to distribute the binary alongside the config file among other raspberry zero devices
  * Use the supplied config `talkkclient.xml` adapt it and launch the application via
  ```
  ./bin/talkkonnect --config talkkonnect.xml
  ```
+)
 
+8b. If provided here (and same raspberry pi zero as when compiled is used) use the binary and here
+```
+cp talkkonnect.xml.default talkkonnect.xml
+# edit the xml by providing at least server address, name and  server login password
+chmod +x bin/talkkonnect
+./bin/talkkonnect --config talkkonnect.xml
+```
  
 
 ## TODOs
